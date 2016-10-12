@@ -1,6 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.dangfiztssi.flicks.models.Movie" />
+
+        <variable
+            name="click"
+            type="com.example.dangfiztssi.flicks.presenter.MovieClickHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginBottom="@dimen/margin_top_bottom_item"
+            android:layout_marginTop="@dimen/margin_top_bottom_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/imgPoster"
+                android:layout_height="@dimen/height_item"
+                android:onClick="@{movie.popular ? click.onClickTrailer : click.onClickDetail}"
+                android:scaleType="fitCenter"
+                app:imageUrl="@{movie.poster}"
+                tools:src="@drawable/demo" />
+
+                <ImageView
+                    android:id="@+id/img_play_trailer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/sym_def_app_icon"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{click.onClickDetail}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{movie.title}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/title_font_size"
+                    tools:text="Title movie" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{movie.releaseDate}"
+                    android:textSize="@dimen/release_date_font_size"
+                    tools:text="20-10-2016" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:maxLines="5"
+                    android:text="@{movie.overview}"
+                    tools:text="this is overview for this movie.this is overview for this movie.this is overview for this movie" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"/>
+    </LinearLayout>
+
+</layout>

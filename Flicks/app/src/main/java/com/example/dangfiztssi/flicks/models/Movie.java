@@ -1,5 +1,6 @@
 package com.example.dangfiztssi.flicks.models;
 
+import com.example.dangfiztssi.flicks.utils.AppConstant;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -37,11 +38,11 @@ public class Movie {
     }
 
     public String getPoster() {
-        return mPoster;
+        return AppConstant.BASE_IMAGE_URL + mPoster;
     }
 
     public String getBackdrop() {
-        return mBackdrop;
+        return AppConstant.BASE_IMAGE_URL + mBackdrop;
     }
 
     public String getReleaseDate() {
@@ -59,5 +60,9 @@ public class Movie {
     @Override
     public String toString() {
         return mId + " - " + mTitle + " - " + mVoteAverage;
+    }
+
+    public boolean isPopular(){
+        return mVoteAverage < 5 ? false : true;
     }
 }
