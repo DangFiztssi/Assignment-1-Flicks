@@ -3,11 +3,15 @@ package com.example.dangfiztssi.flicks.models;
 import com.example.dangfiztssi.flicks.utils.AppConstant;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by DangF on 10/11/16.
  */
 
-public class Movie {
+public class Movie implements Serializable{
+    private static final long serialVersionUID = 1L;
+
     @SerializedName("title")
     private String mTitle;
 

@@ -9,4 +9,10 @@
     <dimen name="title_font_size">20sp</dimen>
     <dimen name="release_date_font_size">18sp</dimen>
     <dimen name="overview_font_size">18sp</dimen>
+    <dimen name="play_icon">40dp</dimen>
+
+    <!--Detail activity-->
+    <dimen name="height_image_video">200dp</dimen>
+    <dimen name="size_button_play">50dp</dimen>
+    <dimen name="margin_between_row">8dp</dimen>
 </resources>

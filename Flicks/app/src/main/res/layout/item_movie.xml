@@ -41,9 +41,9 @@
 
                 <ImageView
                     android:id="@+id/img_play_trailer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/sym_def_app_icon"
+                    android:layout_width="@dimen/play_icon"
+                    android:layout_height="@dimen/play_icon"
+                    android:src="@drawable/play_icon"
                     android:layout_centerInParent="true"
                     />
 

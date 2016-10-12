@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detail_movie"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.dangfiztssi.flicks.activity.DetailMovieActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_image_video">
+
+        <ImageView
+            android:id="@+id/img_video"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_image_video"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/demo" />
+
+        <ImageView
+            android:layout_width="@dimen/size_button_play"
+            android:layout_height="@dimen/size_button_play"
+            android:layout_centerInParent="true"
+            android:src="@drawable/play_icon" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Title"
+        android:textSize="@dimen/title_font_size"
+        android:layout_marginTop="@dimen/margin_between_row"/>
+    <TextView
+        android:id="@+id/tv_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12-10-2016"
+        android:layout_marginTop="@dimen/margin_between_row"
+        android:layout_marginBottom="@dimen/margin_between_row"
+        android:textSize="@dimen/release_date_font_size"/>
+    <TextView
+        android:id="@+id/tv_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Overview "
+        android:textSize="@dimen/overview_font_size"/>
+</LinearLayout>

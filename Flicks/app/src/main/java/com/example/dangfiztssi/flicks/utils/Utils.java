@@ -1,5 +1,15 @@
 package com.example.dangfiztssi.flicks.utils;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
+
+import com.example.dangfiztssi.flicks.R;
+
 import java.io.IOException;
 
 import okhttp3.HttpUrl;
@@ -14,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by DangF on 10/12/16.
  */
 
-public class RetrofitUtils {
+public class Utils {
 
     public static Retrofit getRetrofit(){
         return new Retrofit.Builder()
@@ -46,5 +56,19 @@ public class RetrofitUtils {
                 return chain.proceed(request);
             }
         };
+    }
+
+    public static Dialog getWaitingDialog(Activity c) {
+        Dialog ret = new Dialog(c);
+        LayoutInflater inf = ((LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
+        View v = inf.inflate(R.layout.waiting_dialog, null);
+        ret.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        ret.setContentView(v);
+        ret.setCanceledOnTouchOutside(false);
+        ret.getWindow().setDimAmount(0.0f);
+        ret.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        return ret;
+
     }
 }
