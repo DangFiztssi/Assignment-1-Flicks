@@ -74,6 +74,7 @@ public class MainActivityPresenter {
     }
 
     private void fetchData(Response<NowPlaying> response){
+        lstMain.clear();
         lstMain.addAll(response.body().getMovies());
         adapter.notifyDataSetChanged();
         if(activity.dialog.isShowing())

@@ -6,12 +6,10 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dangfiztssi.flicks.BR;
@@ -76,11 +74,13 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
 
         int orientation = activity.getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            holder.imgPoster.setScaleType(ImageView.ScaleType.FIT_XY);
             Glide.with(activity)
                     .load(movie.getBackdrop())
                     .into(holder.imgPoster);
         }
         else if(orientation == Configuration.ORIENTATION_PORTRAIT) {
+            holder.imgPoster.setScaleType(ImageView.ScaleType.FIT_CENTER);
             Glide.with(activity)
                     .load(movie.getPoster())
                     .into(holder.imgPoster);
@@ -90,19 +90,16 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
         holder.getBinding().setVariable(BR.click, new MovieClickHandler() {
             @Override
             public void onClickTrailer(View view) {
-                Log.e("backdrop", movie.getBackdrop());
-                Toast.makeText(activity, "has click trailer", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(activity, DetailMovieActivity.class);
-                Bundle bundle = new Bundle();
-//                bundle.putParcelable("movie", movie);
-                bundle.putSerializable("movie", movie);
-                i.putExtra("data",bundle);
-                activity.startActivity(i);
+
             }
 
             @Override
             public void onClickDetail(View view) {
-                Toast.makeText(activity, "has click detail", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(activity, DetailMovieActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("movie", movie);
+                i.putExtra("data",bundle);
+                activity.startActivity(i);
             }
         });
 

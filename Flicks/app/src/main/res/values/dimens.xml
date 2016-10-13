@@ -10,6 +10,7 @@
     <dimen name="release_date_font_size">18sp</dimen>
     <dimen name="overview_font_size">18sp</dimen>
     <dimen name="play_icon">40dp</dimen>
+    <dimen name="padding_left_right_content">8dp</dimen>
 
     <!--Detail activity-->
     <dimen name="height_image_video">200dp</dimen>
