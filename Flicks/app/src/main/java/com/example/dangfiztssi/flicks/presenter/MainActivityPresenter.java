@@ -30,6 +30,12 @@ public class MainActivityPresenter {
         adapter = new ItemMovieAdapter(activity,lstMain);
     }
 
+    public void setLstMain(List<Movie> movies){
+        lstMain.clear();
+        lstMain.addAll(movies);
+        adapter.notifyDataSetChanged();
+    }
+
     public ItemMovieAdapter getAdapter(){
         return adapter;
     }
@@ -61,6 +67,10 @@ public class MainActivityPresenter {
 //
 //            }
 //        });
+    }
+
+    public List<Movie> getMovies(){
+        return lstMain;
     }
 
     private void fetchData(Response<NowPlaying> response){

@@ -36,8 +36,8 @@
                 android:layout_height="@dimen/height_item"
                 android:onClick="@{movie.popular ? click.onClickTrailer : click.onClickDetail}"
                 android:scaleType="fitCenter"
-                app:imageUrl="@{movie.poster}"
                 tools:src="@drawable/demo" />
+                <!--app:imageUrl="@{movie.poster}"-->
 
                 <ImageView
                     android:id="@+id/img_play_trailer"

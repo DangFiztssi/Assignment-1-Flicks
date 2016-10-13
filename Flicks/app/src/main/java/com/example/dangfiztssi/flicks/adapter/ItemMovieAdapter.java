@@ -1,16 +1,19 @@
 package com.example.dangfiztssi.flicks.adapter;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.dangfiztssi.flicks.BR;
 import com.example.dangfiztssi.flicks.R;
 import com.example.dangfiztssi.flicks.activity.DetailMovieActivity;
@@ -41,6 +44,7 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
 
         ViewDataBinding binding;
         @BindView(R.id.img_play_trailer) ImageView playIcon;
+        @BindView(R.id.imgPoster) ImageView imgPoster;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -70,12 +74,27 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
         else
             holder.playIcon.setVisibility(View.GONE);
 
+        int orientation = activity.getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Glide.with(activity)
+                    .load(movie.getBackdrop())
+                    .into(holder.imgPoster);
+        }
+        else if(orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Glide.with(activity)
+                    .load(movie.getPoster())
+                    .into(holder.imgPoster);
+        }
+
+
         holder.getBinding().setVariable(BR.click, new MovieClickHandler() {
             @Override
             public void onClickTrailer(View view) {
+                Log.e("backdrop", movie.getBackdrop());
                 Toast.makeText(activity, "has click trailer", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(activity, DetailMovieActivity.class);
                 Bundle bundle = new Bundle();
+//                bundle.putParcelable("movie", movie);
                 bundle.putSerializable("movie", movie);
                 i.putExtra("data",bundle);
                 activity.startActivity(i);
