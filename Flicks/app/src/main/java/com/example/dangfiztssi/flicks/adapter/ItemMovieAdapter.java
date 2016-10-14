@@ -10,12 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.dangfiztssi.flicks.BR;
 import com.example.dangfiztssi.flicks.R;
 import com.example.dangfiztssi.flicks.activity.DetailMovieActivity;
 import com.example.dangfiztssi.flicks.activity.MainActivity;
+import com.example.dangfiztssi.flicks.activity.TrailerMovieActivity;
 import com.example.dangfiztssi.flicks.models.Movie;
 import com.example.dangfiztssi.flicks.presenter.MovieClickHandler;
 
@@ -41,7 +43,8 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         ViewDataBinding binding;
-        @BindView(R.id.img_play_trailer) ImageView playIcon;
+        @BindView(R.id.img_play_trailer)
+        LinearLayout playIcon;
         @BindView(R.id.imgPoster) ImageView imgPoster;
 
         public MyViewHolder(View itemView) {
@@ -90,7 +93,12 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
         holder.getBinding().setVariable(BR.click, new MovieClickHandler() {
             @Override
             public void onClickTrailer(View view) {
-
+                Intent i = new Intent(activity, TrailerMovieActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString(TrailerMovieActivity.ID_MOVIE_KEY, movie.getId() + "");
+                bundle.putString(TrailerMovieActivity.REQUEST, TrailerMovieActivity.FROM_MAIN_KEY);
+                i.putExtra(TrailerMovieActivity.DATA_KEY, bundle);
+                activity.startActivity(i);
             }
 
             @Override

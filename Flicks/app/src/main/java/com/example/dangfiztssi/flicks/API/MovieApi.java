@@ -1,8 +1,8 @@
 package com.example.dangfiztssi.flicks.API;
 
+import com.example.dangfiztssi.flicks.models.ListTrailer;
 import com.example.dangfiztssi.flicks.models.NowPlaying;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -12,11 +12,10 @@ import retrofit2.http.Path;
  */
 
 public interface MovieApi {
-
     @GET("now_playing")
     Call<NowPlaying> getNowPlaying();
 
 
-    @GET("{id}/trailers")
-    Call<ResponseBody> getTrailer(@Path("id") Integer id);
+    @GET("{id}/videos")
+    Call<ListTrailer> getTrailer(@Path("id") String id);
 }

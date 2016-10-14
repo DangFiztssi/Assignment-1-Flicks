@@ -26,6 +26,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Utils {
 
+    public static Retrofit getSimplyRetrofit(){
+        return new Retrofit.Builder()
+                .baseUrl(AppConstant.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
     public static Retrofit getRetrofit(){
         return new Retrofit.Builder()
                 .baseUrl(AppConstant.BASE_URL)
