@@ -36,12 +36,13 @@ The following **additional** features are implemented:
 
 * [x] Use Data Binding Library to bind data into views.
 * [x] Can watch more trailer each Movie.
+* [x] View review each Movie.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Flick demo](demo_flicks.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
