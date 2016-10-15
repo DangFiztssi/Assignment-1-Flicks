@@ -49,7 +49,7 @@
                     android:background="@drawable/bg_play"
                     android:clickable="true"
                     android:gravity="center"
-                    android:onClick="@{movie.popular ? click.onClickTrailer : click.onClickDetail}">
+                    android:onClick="@{!movie.popular ? click.onClickDetail : click.onClickTrailer}">
 
                     <ImageView
                         android:layout_width="@dimen/play_icon"
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{movie.title}"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/title_font_size"
                     tools:text="Title movie" />
 

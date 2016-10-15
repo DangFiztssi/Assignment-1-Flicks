@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.dangfiztssi.flicks.R;
 import com.example.dangfiztssi.flicks.activity.TrailerMovieActivity;
 import com.example.dangfiztssi.flicks.models.TrailerMovie;
 import com.example.dangfiztssi.flicks.utils.AppConstant;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,9 @@ public class ItemTrailerAdapter extends RecyclerView.Adapter<ItemTrailerAdapter.
     public void onBindViewHolder(final MyVieHolder holder, int position) {
         final TrailerMovie trailerMovie = trailerMovieList.get(position);
 
-        Glide.with(activity)
+        Picasso.with(activity)
                 .load(AppConstant.BASE_YOUTUBE_THUMBNAIL + trailerMovie.getKey() + "/0.jpg")
+                .placeholder(R.drawable.ic_place_holder)
                 .into(holder.thumbnailView);
 
         holder.card.setOnClickListener(new View.OnClickListener() {

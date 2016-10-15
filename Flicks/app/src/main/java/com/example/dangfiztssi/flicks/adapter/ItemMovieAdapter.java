@@ -6,13 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.bumptech.glide.Glide;
 import com.example.dangfiztssi.flicks.BR;
 import com.example.dangfiztssi.flicks.R;
 import com.example.dangfiztssi.flicks.activity.DetailMovieActivity;
@@ -20,11 +20,13 @@ import com.example.dangfiztssi.flicks.activity.MainActivity;
 import com.example.dangfiztssi.flicks.activity.TrailerMovieActivity;
 import com.example.dangfiztssi.flicks.models.Movie;
 import com.example.dangfiztssi.flicks.presenter.MovieClickHandler;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 /**
  * Created by DangF on 10/12/16.
@@ -78,14 +80,18 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
         int orientation = activity.getResources().getConfiguration().orientation;
         if(orientation == Configuration.ORIENTATION_LANDSCAPE) {
             holder.imgPoster.setScaleType(ImageView.ScaleType.FIT_XY);
-            Glide.with(activity)
+            Picasso.with(activity)
                     .load(movie.getBackdrop())
+                    .placeholder(R.drawable.ic_place_holder)
+                    .transform(new RoundedCornersTransformation(10,10))
                     .into(holder.imgPoster);
         }
         else if(orientation == Configuration.ORIENTATION_PORTRAIT) {
             holder.imgPoster.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            Glide.with(activity)
+            Picasso.with(activity)
                     .load(movie.getPoster())
+                    .placeholder(R.drawable.ic_place_holder)
+                    .transform(new RoundedCornersTransformation(10,10))
                     .into(holder.imgPoster);
         }
 
@@ -103,6 +109,7 @@ public class ItemMovieAdapter  extends RecyclerView.Adapter<ItemMovieAdapter.MyV
 
             @Override
             public void onClickDetail(View view) {
+                Log.e("click poster no trailer","...");
                 Intent i = new Intent(activity, DetailMovieActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("movie", movie);
