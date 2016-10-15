@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.dangfiztssi.flicks.R;
@@ -39,6 +40,8 @@ public class DetailMovieActivity extends AppCompatActivity {
     RecyclerView rvTrailers;
     @BindView(R.id.rvReview)
     RecyclerView rvReview;
+    @BindView(R.id.ratingVoted)
+    RatingBar voted;
 
     TrailerMoviePresenter presenter;
     DetailMoviePresenter detailMoviePresenter;
@@ -127,5 +130,6 @@ public class DetailMovieActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(movie.getTitle());
         tvReleaseDate.setText(movie.getReleaseDate());
         tvOverview.setText(movie.getOverview());
+        voted.setRating(movie.getVoteAverage()/2);
     }
 }

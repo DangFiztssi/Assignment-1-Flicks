@@ -45,11 +45,30 @@ public class ItemReviewAdapter extends RecyclerView.Adapter<ItemReviewAdapter.My
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, int position) {
         Review rv = reviewList.get(position);
 
         holder.tvReview.setText(rv.getContent());
         holder.tvAuthor.setText("- " + rv.getAuthor() + " -");
+        holder.tvReview.setTag(false);
+        holder.tvReview.setMaxLines(4);
+
+        holder.tvReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((boolean)holder.tvReview.getTag())
+                {
+                    holder.tvReview.setMaxLines(4);
+                    holder.tvReview.setTag(false);
+                }else{
+                    holder.tvReview.setMaxLines(Integer.MAX_VALUE);
+                    holder.tvReview.setTag(true);
+                }
+
+            }
+        });
+
+
     }
 
     @Override

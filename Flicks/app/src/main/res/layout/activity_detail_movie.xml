@@ -13,6 +13,7 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvTrailers"
             android:layout_width="wrap_content"
@@ -21,62 +22,80 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TextView
+            <RatingBar
+                android:id="@+id/ratingVoted"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Release Date: "
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/release_date_font_size" />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1" />
 
-            <TextView
-                android:id="@+id/tv_release_date"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_between_row"
-                android:layout_marginTop="@dimen/margin_between_row"
-                android:textSize="@dimen/release_date_font_size"
-                tools:text="12-10-2016" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Release Date: "
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/release_date_font_size" />
+
+                <TextView
+                    android:id="@+id/tv_release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_between_row"
+                    android:layout_marginTop="@dimen/margin_between_row"
+                    android:textSize="@dimen/release_date_font_size"
+                    tools:text="12-10-2016" />
+
+            </LinearLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/overview_font_size"
-            android:textColor="@color/black"
-            tools:text="Overview"
+            android:layout_marginBottom="@dimen/margin_between_row"
             android:layout_marginTop="@dimen/margin_between_row"
-            android:layout_marginBottom="@dimen/margin_between_row"/>
+            android:textColor="@color/black"
+            android:textSize="@dimen/overview_font_size"
+            tools:text="Overview" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
-                android:layout_marginTop="@dimen/margin_between_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_between_row"
                 android:text="@string/review_label"
+                android:textColor="@color/black"
                 android:textSize="@dimen/overview_font_size"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textStyle="bold" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/colorPrimary"
-                android:layout_marginBottom="@dimen/margin_between_row"/>
+                android:layout_marginBottom="@dimen/margin_between_row"
+                android:background="@color/colorPrimary" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvReview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rvReview">
+                android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
