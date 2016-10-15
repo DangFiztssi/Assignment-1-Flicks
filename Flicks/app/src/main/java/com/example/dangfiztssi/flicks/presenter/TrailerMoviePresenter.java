@@ -3,6 +3,7 @@ package com.example.dangfiztssi.flicks.presenter;
 import android.app.Activity;
 
 import com.example.dangfiztssi.flicks.API.MovieApi;
+import com.example.dangfiztssi.flicks.adapter.ItemTrailerAdapter;
 import com.example.dangfiztssi.flicks.models.ListTrailer;
 import com.example.dangfiztssi.flicks.models.TrailerMovie;
 import com.example.dangfiztssi.flicks.utils.Utils;
@@ -22,9 +23,15 @@ public class TrailerMoviePresenter {
     private static final String TAG = "TrailerMoviePresenter";
     Activity activity;
     List<TrailerMovie> trailerMovieList = new ArrayList<>();
+    ItemTrailerAdapter adapter;
 
     public TrailerMoviePresenter(Activity activity) {
         this.activity = activity;
+        adapter = new ItemTrailerAdapter(trailerMovieList,activity);
+    }
+
+    public ItemTrailerAdapter getAdapter(){
+        return adapter;
     }
 
     public void getSourceYoutube(String id, final SimpleCallBack cb) {
@@ -35,6 +42,7 @@ public class TrailerMoviePresenter {
             public void onResponse(Call<ListTrailer> call, Response<ListTrailer> response) {
                 fetchData(response);
                 cb.onSuccess();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -45,8 +53,9 @@ public class TrailerMoviePresenter {
     }
 
     public String getFirstResource(){
-        if(trailerMovieList.size() > 1)
-        return trailerMovieList.get(0).getKey();
+        if(trailerMovieList.size() > 1) {
+            return trailerMovieList.get(0).getKey();
+        }
         else  return "";
     }
 

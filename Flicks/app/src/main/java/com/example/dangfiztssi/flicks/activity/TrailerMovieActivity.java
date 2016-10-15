@@ -2,6 +2,7 @@ package com.example.dangfiztssi.flicks.activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -53,6 +54,7 @@ public class TrailerMovieActivity extends YouTubeBaseActivity {
         switch (bundle.getString(REQUEST)) {
             case FROM_MAIN_KEY:
                 String id = bundle.getString(ID_MOVIE_KEY);
+                Log.e("src youtube", "onCreate: " + id );
                 presenter.getSourceYoutube(id, new SimpleCallBack() {
                     @Override
                     public void onSuccess() {
